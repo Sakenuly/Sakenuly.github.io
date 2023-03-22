@@ -4,12 +4,7 @@
  import { weatherData } from "./weatherApi.js";
  import { render } from "./render.js";
  import { savedCity } from "./savedCity.js";
-if (JSON.parse(localStorage.getItem(2)) === null){
-    weatherData("Astana")
-    .then(data => {
-        apply(data);
-   })
-}
+
 if (JSON.parse(localStorage.getItem(2)) !== null) {savedCity()}
 render()
  const submitButton = document.querySelector('.weather__button');
