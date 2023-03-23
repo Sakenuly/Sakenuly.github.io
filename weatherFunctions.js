@@ -14,7 +14,13 @@ const city = document.querySelectorAll('#city');
 const degrees = document.querySelector('.now-content__top');
 const icons = document.querySelector('.now-content__img');
 let tempData;
+function popupError(err){
+const popupText = document.querySelector('.error-content');
+const popup = document.querySelector('.b-popup');
+popupText.textContent = err;
+popup.style.display = "block"
 
+}
 function submitWeather(event){
     event.preventDefault();
     render();
@@ -23,10 +29,11 @@ function submitWeather(event){
         return apply(data);
     }
    })
-   .catch(err => alert(err))
+   .catch(err => popupError(err))
 
    weatherForecast(searchInput.value)
    .then(data => forecastApply(data))
+   .catch(err => popupError(err))
    .finally (searchInput.value = '');
    
 }
@@ -94,13 +101,7 @@ for (let i = 0; i < 39; i++) {
  forecastContainer.appendChild(newItem);
 }
 }
-// function changeFavoriteIcon(){
-// if (list.find(el => el.name === favoriteText.textContent )){
-//  favoriteButton.classList.add('_active-favorite');
-// } else {
-//     favoriteButton.classList.remove('_active-favorite');
-// }
-// }
+ 
 function changeFavoriteIcon(){
     if (list.find(el => el.name === tempData.name )){
      favoriteButton.classList.add('_active-favorite');
@@ -111,4 +112,4 @@ function changeFavoriteIcon(){
     }
     
 
-export { submitWeather, tempData, apply, changeFavoriteIcon, forecastApply }
+export { submitWeather, tempData, apply, changeFavoriteIcon, forecastApply, popupError }
