@@ -80,10 +80,7 @@ button {
   flex: 1 1 100%;
   align-items: center;
   justify-content: center;
-  background: #d4b5d0;
-}
-.main-page {
-  color: #fff;
+  background: rgba(177, 177, 177, 0.2862745098);
 }
 .main-page__container {
   padding-top: 50px;
@@ -98,8 +95,7 @@ button {
 }
 
 .weather {
-  border: 1px solid #000000;
-  background: rgba(134, 205, 253, 0.5803921569);
+  border: 1px solid #000;
   line-height: 28px;
 }
 .weather__form {
@@ -109,7 +105,14 @@ button {
 .weather__input {
   flex: 1 1 auto;
   padding: 12px;
+}
+.weather__input::-moz-placeholder {
   font-size: 18px;
+  line-height: 21px;
+}
+.weather__input::placeholder {
+  font-size: 18px;
+  line-height: 21px;
 }
 .weather__button {
   font-size: 16px;
@@ -148,17 +151,17 @@ button {
 }
 .now-content__img {
   display: block;
-  max-width: 105px;
-  max-height: 70px;
+  max-width: 110px;
+  max-height: 59px;
   width: 100%;
+  margin: 0 auto;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
-  margin: 0 auto;
 }
 .now-content__img:not(:last-child) {
-  margin-bottom: 90px;
+  margin-bottom: 98px;
 }
 .now-content__bottom {
   padding-right: 24px;
@@ -170,13 +173,6 @@ button {
 .bottom-now-content__city {
   flex: 1 1 auto;
 }
-._active-favorite .bottom-now-content__icon {
-  fill: black;
-}
-._active-favorite .bottom-now-content__icon path {
-  opacity: 1;
-}
-
 .buttons {
   display: flex;
   flex-wrap: wrap;
@@ -220,21 +216,23 @@ button {
   padding-bottom: 18px;
 }
 
+.button-delete {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 24px;
+  color: red;
+}
 .list-right-content {
   flex: 0 1 50%;
 }
-.list-right-content__item {
-  display: flex;
-  justify-content: space-between;
-}
 .list-right-content__item:not(:last-child) {
   margin-bottom: 14px;
+  
 }
-.list-right-content__text {
-  flex: 1 1 auto;
-  cursor: pointer;
+.list-right-content__item {
+  display: flex;
+    justify-content: space-between;
 }
-
 .details {
   padding-left: 17px;
   padding-right: 17px;
@@ -274,7 +272,6 @@ button {
 }
 .item-forecast__top {
   display: flex;
-  justify-content: space-between;
 }
 .item-forecast__top:not(:last-child) {
   margin-bottom: 34px;
@@ -296,13 +293,6 @@ button {
   flex-direction: column;
   align-items: center;
 }
-.item-forecast__icon {
-  max-width: 35px;
-  height: 35px;
-  object-fit: cover;
-  width: 100%;
-  object-position: center;
-}
 .forecast::-webkit-scrollbar {
   width: 3px;
   background-color: rgba(53, 65, 233, 0.2941176471);
@@ -312,17 +302,3 @@ button {
   background-color: #3541e9;
   border-radius: 3px;
 }
-
-.button-delete {
-  padding-left: 10px;
-  padding-right: 10px;
-  font-size: 24px;
-  transform: rotate(45deg);
-  color: rgb(253, 83, 83);
-  transition: all 0.3s ease 0s;
-}
-@media (any-hover: hover) {
-  .button-delete:hover {
-    transform: rotate(45deg) scale(1.5);
-  }
-}/*# sourceMappingURL=style.css.map */

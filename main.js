@@ -4,6 +4,9 @@
  import { weatherData } from "./weatherApi.js";
  import { render } from "./render.js";
  import { savedCity } from "./savedCity.js";
+ import { changeFavoriteIcon } from "./weatherFunctions.js";
+ import { weatherForecast } from "./weatherApi.js";
+ import { forecastApply } from "./weatherFunctions.js";
 
 if (JSON.parse(localStorage.getItem(2)) !== null) {savedCity()}
 render()
@@ -11,17 +14,26 @@ render()
  const favoriteButton = document.querySelector('.bottom-now-content__favorite')
  const ulList = document.querySelector('.right-content__list')
 
+
+
 //eventListeners
 ulList.addEventListener("click", function(event){
 if (event.target.className === "button-delete") {
 deleteCity(+event.target.id)
+changeFavoriteIcon()
 render()
+
 }
 if (event.target.className ==="list-right-content__item") {
     weatherData(event.target.textContent.slice(0, -1))
     .then(data => apply(data))
     .then(localStorage.setItem(2, JSON.stringify(event.target.textContent.slice(0, -1))))
-     
+    
+    weatherForecast(event.target.textContent.slice(0, -1))
+   .then(data => forecastApply(data))
+    // weatherForecast(event.target.textContent.slice(0, -1))
+    // .then(data => forecastApply(data))
+    // .then(localStorage.setItem(forecast, JSON.stringify(data)))
 }
 })
  favoriteButton.addEventListener("click", function() {
@@ -30,7 +42,12 @@ if (event.target.className ==="list-right-content__item") {
         return;
     }
     addCity(tempData.name)
+    changeFavoriteIcon()
+    weatherForecast(tempData.name)
+    .then(data => forecastApply(data))
     render()
 })
  BUTTONS.addEventListener("click", showScreen);
  submitButton.addEventListener("click", submitWeather)
+
+ export {favoriteButton}

@@ -6,4 +6,11 @@ function stampToTime(timeStamp){
   const formattedTime = `${hours}:${minutes.substr(-2)}`;
 return formattedTime  
 }
-export {stampToTime}
+
+function stampToDate(timeStamp) {
+  const unixTimestamp = timeStamp 
+  const date = new Date(unixTimestamp * 1000); 
+ const formattedTime =  date.toLocaleDateString("default");
+ return formattedTime 
+}
+export {stampToTime, stampToDate}
