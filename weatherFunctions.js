@@ -18,7 +18,7 @@ function popupError(err){
 const popupText = document.querySelector('.error-content');
 const popup = document.querySelector('.b-popup');
 popupText.textContent = err;
-popup.style.display = "block"
+popup.style.transform = "scale(1)"
 
 }
 function submitWeather(event){

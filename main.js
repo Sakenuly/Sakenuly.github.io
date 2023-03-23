@@ -50,7 +50,9 @@ if (event.target.className ==="list-right-content__item") {
  BUTTONS.addEventListener("click", showScreen);
  submitButton.addEventListener("click", submitWeather)
  closePopup.addEventListener("click", function() {
-    document.querySelector('.b-popup').style.display = "none";
+    document.querySelector('.b-popup').style.transform = "scale(0)";  
+
+   
  })
 
  export {favoriteButton}
